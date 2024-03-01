@@ -1,0 +1,44 @@
+MPLS-1 PtoP ISIS Configuration
+
+This P1 Configuration
+interface Loopback0
+ip address 10.1.3.1 255.255.255.255
+end
+
+P1(config)#key chain CISCO
+P1(config-keychain)#key 1
+P1(config-keychain-key)#key-string 0 0x0
+P1(config-keychain-key)#end
+
+P1(config)#bfd-template single-hop ISIS 
+P1(config-bfd)#interval both 300 multiplier 3
+P1(config-bfd)#end
+
+
+router isis 1
+ net 49.0001.0000.0000.0001.00
+ is-type level-2-only
+ authentication mode md5 level-2
+ authentication key-chain CISCO level-2
+ metric-style wide level-2
+ no hello padding point-to-point
+ log-adjacency-changes
+
+interface GigabitEthernet5
+ mtu 2000 >> CML doesn't support mtu size 9000
+ ip address 10.1.1.1 255.255.255.252
+ ip router isis 1
+ carrier-delay 1
+ speed 1000
+ no negotiation auto
+ bfd template ISIS
+ no mop enabled
+ no mop sysid
+ isis circuit-type level-2-only
+ isis network point-to-point 
+ isis authentication mode md5
+ isis authentication key-chain CISCO
+ isis bfd
+end
+
+
