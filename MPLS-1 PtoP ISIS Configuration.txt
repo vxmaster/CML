@@ -19,11 +19,13 @@ P1(config-bfd)#end
 router isis 1
  net 49.0001.0000.0000.0001.00
  is-type level-2-only
+ router-id Loopback0
  authentication mode md5 level-2
  authentication key-chain CISCO level-2
  metric-style wide level-2
  no hello padding point-to-point
  log-adjacency-changes
+ passive-interface Loopback0
 
 interface GigabitEthernet5
  mtu 2000 >> CML doesn't support mtu size 9000
@@ -59,13 +61,15 @@ P2(config-bfd)#end
 
 
 router isis 1
- net 49.0001.0000.0002.00
+ net 49.0001.0000.0000.0002.00
  is-type level-2-only
+ router-id Loopback0
  authentication mode md5 level-2
  authentication key-chain CISCO level-2
  metric-style wide level-2
  no hello padding point-to-point
  log-adjacency-changes
+ passive-interface Loopback0
  
  interface GigabitEthernet5
  mtu 2000
