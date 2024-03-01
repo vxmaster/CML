@@ -1,0 +1,48 @@
+MPLS-1 PtoP Check ISIS Connection
+
+P1#show bfd neighbors 
+
+IPv4 Sessions
+NeighAddr                              LD/RD         RH/RS     State     Int
+10.1.1.2                             4097/4097       Up        Up        Gi5
+P1#
+
+P1#show isis neighbors 
+
+Tag 1:
+System Id       Type Interface     IP Address      State Holdtime Circuit Id
+P2              L2   Gi5           10.1.1.2        UP    20       05
+P1#
+
+P1#show isis topology 
+
+Tag 1:
+
+IS-IS TID 0 paths to level-2 routers
+System Id            Metric     Next-Hop             Interface   SNPA
+P1                   --
+P2                   10         P2                   Gi5         5254.0000.35a5
+
+P2#show clns protocol 
+
+IS-IS Router: 1 (0x10000)
+  System Id: 0001.0000.0002.00  IS-Type: level-2
+  Manual area address(es): 
+        49
+  Routing for area address(es): 
+        49
+  Interfaces supported by IS-IS:
+        GigabitEthernet5 - IP
+        GigabitEthernet4 - IP
+        GigabitEthernet3 - IP
+        GigabitEthernet2 - IP
+        GigabitEthernet1 - IP
+  Redistribute:
+    static (on by default)
+  Distance for L2 CLNS routes: 110
+  RRR level: none
+  Generate narrow metrics: level-1
+  Accept narrow metrics:   level-1
+  Generate wide metrics:   level-2
+  Accept wide metrics:     level-2
+P2# 
