@@ -1,0 +1,124 @@
+
+P1
+router bgp 64555
+ bgp router-id 10.1.3.1
+ bgp cluster-id 10.1.3.255
+ no bgp client-to-client reflection
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor VX peer-group
+ neighbor VX remote-as 64555
+ neighbor VX update-source Loopback0
+ neighbor 10.1.3.2 peer-group VX
+ neighbor 10.1.3.11 peer-group VX
+ neighbor 10.1.3.12 peer-group VX
+ neighbor 10.1.3.13 peer-group VX
+ neighbor 10.1.3.14 peer-group VX
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor VX send-community extended
+  neighbor VX route-reflector-client
+  neighbor 10.1.3.2 activate
+  neighbor 10.1.3.11 activate
+  neighbor 10.1.3.12 activate
+  neighbor 10.1.3.13 activate
+  neighbor 10.1.3.14 activate
+ exit-address-family
+ 
+P2#show run | sec router bgp 
+router bgp 64555
+ bgp router-id 10.1.3.2
+ bgp cluster-id 10.1.3.255
+ no bgp client-to-client reflection
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor VX peer-group
+ neighbor VX remote-as 64555
+ neighbor VX update-source Loopback0
+ neighbor 10.1.3.1 peer-group VX
+ neighbor 10.1.3.11 peer-group VX
+ neighbor 10.1.3.12 peer-group VX
+ neighbor 10.1.3.13 peer-group VX
+ neighbor 10.1.3.14 peer-group VX
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor VX send-community extended
+  neighbor VX route-reflector-client
+  neighbor 10.1.3.1 activate
+  neighbor 10.1.3.11 activate
+  neighbor 10.1.3.12 activate
+  neighbor 10.1.3.13 activate
+  neighbor 10.1.3.14 activate
+ exit-address-family
+ 
+ 
+PE1#show run | sec router bgp
+router bgp 64555
+ bgp router-id 10.1.3.11
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor VX-RR peer-group
+ neighbor VX-RR remote-as 64555
+ neighbor VX-RR update-source Loopback0
+ neighbor 10.1.3.1 peer-group VX-RR
+ neighbor 10.1.3.2 peer-group VX-RR
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor VX-RR send-community extended
+  neighbor 10.1.3.1 activate
+  neighbor 10.1.3.2 activate
+ exit-address-family
+ 
+ 
+PE2#show run | sec router bgp
+router bgp 64555
+ bgp router-id 10.1.3.12
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor VX-RR peer-group
+ neighbor VX-RR remote-as 64555
+ neighbor VX-RR update-source Loopback0
+ neighbor 10.1.3.1 peer-group VX-RR
+ neighbor 10.1.3.2 peer-group VX-RR
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor VX-RR send-community extended
+  neighbor 10.1.3.1 activate
+  neighbor 10.1.3.2 activate
+ exit-address-family
+
+
+ 
+PE3#show run | sec router bgp
+router bgp 64555
+ bgp router-id 10.1.3.13
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor VX-RR peer-group
+ neighbor VX-RR remote-as 64555
+ neighbor VX-RR update-source Loopback0
+ neighbor 10.1.3.1 peer-group VX-RR
+ neighbor 10.1.3.2 peer-group VX-RR
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor VX-RR send-community extended
+  neighbor 10.1.3.1 activate
+  neighbor 10.1.3.2 activate
+ exit-address-family
+ 
+ 
