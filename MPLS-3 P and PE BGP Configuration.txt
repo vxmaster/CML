@@ -3,7 +3,6 @@ P1
 router bgp 64555
  bgp router-id 10.1.3.1
  bgp cluster-id 10.1.3.255
- no bgp client-to-client reflection
  bgp log-neighbor-changes
  no bgp default ipv4-unicast
  neighbor VX peer-group
@@ -32,7 +31,6 @@ P2#show run | sec router bgp
 router bgp 64555
  bgp router-id 10.1.3.2
  bgp cluster-id 10.1.3.255
- no bgp client-to-client reflection
  bgp log-neighbor-changes
  no bgp default ipv4-unicast
  neighbor VX peer-group
