@@ -7,6 +7,8 @@ Liability Disclaimer
 In no event shall Author be liable for any damages whatsoever (including, without limitation, damages for loss of use, data or profit) arising out of the use or inability to use the posting's information even if Author has been advised of the possibility of such damage.
 As I understand it.
 
+* I would like to thank needle for the mentor support in Lab Design and configuration.
+* You can follow the address below for other technical shares of needles. >>> https://www.uni-koeln.de/~pbogusze/
 
-All contents in this area may be subject to confidential or non-confidential agreements by companies or third parties (legal or real entity). The purpose of this content is to share within the GNU logic. 
-Please keep in mind that intellectual and property owners may claim rights in your posts.
+
+
