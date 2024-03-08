@@ -1,0 +1,206 @@
+PE1
+vrf definition 10DATA
+ description Customer_Internet_Serivces
+ rd 64555:10
+ vpn id 64555:10
+ !
+ address-family ipv4
+  route-target export 64555:10
+  route-target import 64555:10
+ exit-address-family
+vrf definition 20CCTV
+ description Customer_Security_Camera_Services
+ rd 64555:20
+ vpn id 64555:20
+ !
+ address-family ipv4
+  route-target export 64555:20
+  route-target import 64555:20
+ exit-address-family
+vrf definition 30IPTV
+ description Customer_IPTV_Services
+ rd 64555:30
+ vpn id 64555:30
+ !
+ address-family ipv4
+  route-target export 64555:30
+  route-target import 64555:30
+ exit-address-family
+ vrf definition 254RP
+ description Distributed_Rendezvous_Point
+ rd 64555:254
+ vpn id 64555:254
+ !
+ address-family ipv4
+  route-target export 64555:254
+  route-target import 64555:254
+ exit-address-family
+ 
+PE1#configure terminal 
+PE1(config)#router bgp 64555
+PE1(config-router)#address-family ipv4 vrf 10DATA
+PE1(config-router-af)#redistribute connected 
+PE1(config-router-af)#
+ 
+PE2
+vrf definition 10DATA
+ description Customer_Internet_Serivces
+ rd 64555:10
+ vpn id 64555:10
+ !
+ address-family ipv4
+  route-target export 64555:10
+  route-target import 64555:10
+ exit-address-family
+vrf definition 20CCTV
+ description Customer_Security_Camera_Services
+ rd 64555:20
+ vpn id 64555:20
+ !
+ address-family ipv4
+  route-target export 64555:20
+  route-target import 64555:20
+ exit-address-family
+vrf definition 30IPTV
+ description Customer_IPTV_Services
+ rd 64555:30
+ vpn id 64555:30
+ !
+ address-family ipv4
+  route-target export 64555:30
+  route-target import 64555:30
+ exit-address-family
+ vrf definition 254RP
+ description Distributed_Rendezvous_Point
+ rd 64555:254
+ vpn id 64555:254
+ !
+ address-family ipv4
+  route-target export 64555:254
+  route-target import 64555:254
+ exit-address-family
+ 
+ 
+PE2#configure terminal 
+PE2(config)#router bgp 64555
+PE2(config-router)#address-family ipv4 vrf 10DATA
+PE2(config-router-af)#redistribute connected 
+PE2(config-router-af)#
+ 
+PE3
+vrf definition 10DATA
+ description Customer_Internet_Serivces
+ rd 64555:10
+ vpn id 64555:10
+ !
+ address-family ipv4
+  route-target export 64555:10
+  route-target import 64555:10
+ exit-address-family
+vrf definition 20CCTV
+ description Customer_Security_Camera_Services
+ rd 64555:20
+ vpn id 64555:20
+ !
+ address-family ipv4
+  route-target export 64555:20
+  route-target import 64555:20
+ exit-address-family
+vrf definition 30IPTV
+ description Customer_IPTV_Services
+ rd 64555:30
+ vpn id 64555:30
+ !
+ address-family ipv4
+  route-target export 64555:30
+  route-target import 64555:30
+ exit-address-family
+ 
+ vrf definition 254RP
+ description Distributed_Rendezvous_Point
+ rd 64555:254
+ vpn id 64555:254
+ !
+ address-family ipv4
+  route-target export 64555:254
+  route-target import 64555:254
+ exit-address-family
+ 
+PE3#configure terminal 
+PE3(config)#router bgp 64555
+PE3(config-router)#address-family ipv4 vrf 10DATA
+PE3(config-router-af)#redistribute connected 
+PE3(config-router-af)#
+ 
+ PE4
+ 
+ vrf definition 10DATA
+ description Customer_Internet_Serivces
+ rd 64555:10
+ vpn id 64555:10
+ !
+ address-family ipv4
+  route-target export 64555:10
+  route-target import 64555:10
+ exit-address-family
+vrf definition 20CCTV
+ description Customer_Security_Camera_Services
+ rd 64555:20
+ vpn id 64555:20
+ !
+ address-family ipv4
+  route-target export 64555:20
+  route-target import 64555:20
+ exit-address-family
+vrf definition 30IPTV
+ description Customer_IPTV_Services
+ rd 64555:30
+ vpn id 64555:30
+ !
+ address-family ipv4
+  route-target export 64555:30
+  route-target import 64555:30
+ exit-address-family
+ 
+ vrf definition 254RP
+ description Distributed_Rendezvous_Point
+ rd 64555:254
+ vpn id 64555:254
+ !
+ address-family ipv4
+  route-target export 64555:254
+  route-target import 64555:254
+ exit-address-family
+ 
+ 
+PE4#configure terminal 
+PE4(config)#router bgp 64555
+PE4(config-router)#address-family ipv4 vrf 10DATA
+PE4(config-router-af)#redistribute connected 
+PE4(config-router-af)#end
+
+configure terminal 
+router bgp 64555
+address-family ipv4 vrf 10DATA
+redistribute connected 
+
+## Enter the following commands into bgp 64555 on all pe router devices
+
+ address-family ipv4 vrf 10DATA
+  redistribute connected
+ exit-address-family
+ !        
+ address-family ipv4 vrf 20CCTV
+  redistribute connected
+ exit-address-family
+ !
+ address-family ipv4 vrf 254RP
+  redistribute connected
+ exit-address-family
+ !
+ address-family ipv4 vrf 30IPTV
+  redistribute connected
+ exit-address-family
+
+ 
+ 
